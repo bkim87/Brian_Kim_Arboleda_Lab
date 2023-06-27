@@ -1,0 +1,62 @@
+---
+title: "main"
+output: html_document
+date: "2023-06-27"
+---
+
+
+#Loading Packages
+#Directories and Files Structures
+
+```{r, Loading Libraries}
+
+packages<- c("stringr", "ggplot")
+
+for(package in packages){
+  if(!require(package, character.only = TRUE, quietly = TRUE)){
+    install.packages(package)
+  }
+}    
+  
+  
+```
+
+
+  
+``` {r, Directory Structure}
+
+dirs <- list(code = "./code/", 
+             documentation = "./documentation/", 
+             data = "./data/", 
+             results = "./results/",
+             tables = "./results/tables/", 
+             figures = "./results/figures/"
+             )
+
+
+for(dir in dirs){
+  if(!dir.exists(dir)){
+    dir.create(dir)
+    
+  }
+}
+  
+  
+
+}
+
+  
+```
+
+
+```{r, Figures Test}
+
+plot(1:10, 10:1)
+filename = paste0(dirs$figures, "testPlot.png")
+png(filename = filename)
+plot(1:10, 10:1)
+dev.off()
+
+```
+
+
